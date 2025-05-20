@@ -11,10 +11,13 @@
     /*--main-color:*/
     --bg-color:#ffff;
     --main-color:#6d3bff;
-    --text-color:#ffff;
+    --text-color:#202020;
     --headings-font-family:"Playfair Display", serif;
     --body-font-family:"Source Sans 3", sans-serif;
 
+}
+.dark-theme{
+    --bg-color: #202020;
 }
 h1,h2,h3{
     font-family: "Rubik", sans-serif;
@@ -30,21 +33,22 @@ body{
     align-items: center;
     justify-content: space-between;
     padding: 15px 30px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
-    background: #202020 ;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 19px 20px 3px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
+    background: var(--bg-color);
+    color: var(--text-color);
 
 }
 #home header .logo p{
     font-family: "Rubik", sans-serif;
     font-size: 1.5rem;
-    font-weight: 500;
-    color: #dfd9d9;
+    font-weight: 450;
+    color: var(--main-color);
 }
 #home header .logo p span{
-    color: #dfd9d9;
+    color: var(--text-color);
 }
-#home header .logo i{
-    color: #dfd9d9;
+#home header .logo i,.theme i{
+    color: #6d3bff;
     font-size: 25px;
     margin-right: 5px;
 }
@@ -59,7 +63,7 @@ body{
 #home header ul li a{
     text-decoration: none;
     font-size: 20px;
-    color:#dfd9d9;
+    color:var(--text-color);
     font-weight: 600;
     position: relative;
 }
@@ -78,48 +82,82 @@ body{
     width: 100%;
 }
 #home header  button,
-section.hero-section button{
-    color: #202020;
-    background-color: var(--bg-color);
+section.hero-section button,
+form button[type="submit"]{
+    color: var(--bg-color);
+    background-color: var(--main-color);
     padding: 10px 15px;
     border-radius: 10px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    /*border: 1px solid #202020;*/
-    box-shadow: 0 0.4rem #dfd9d9;
+    border: 1px solid var(--main-color);
+    transition:background-color.4s 0.05s ease,color.4s 0.05s ease;
 
+}
+#home header  button:hover,
+section.hero-section button:hover,
+form.search-form button:hover{
+    color:var(--bg-color);
+    background-color: var(--main-color);
 }
 button:active{
     color: white;
     box-shadow: 0 0.2rem #dfd9d9;
     transform: translateY(0.2rem);
 }
+.theme-contact{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-width: 10%;
+}
+.theme{
+    position: relative;
+}
+.theme i{
+ position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    display: none;
+    cursor: pointer;
+}
+.theme i.active{
+    display: block;
+}
+/**/
 section.hero-section{
     width: 90%;
     margin-inline: auto;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
 }
 section.hero-section h1{
     font-weight: bold;
-    font-size:4.23rem;
+    font-size:3.9rem;
     margin-bottom: 20px;
-    width: 80%;
+    width: 60%;
+    color: var(--main-color);
 }
 section.hero-section p{
-    font-size: 20px;
+    font-size: 18px;
     font-family: sans-serif;
     max-width: 80%;
+    font-weight: 300;
 }
 section.hero-section button{
     margin-top:20px;
-    /*border: 1px solid #6d3bff;*/
-    /*color: #6d3bff;*/
-    background-color: #202020;
-    color: white;
-    box-shadow: 0 0.4rem #202020;
+    padding: 15px ;
+}
+section.hero-section .hero-Image{
+    margin-top: 20px;
+
+}
+section.hero-section .hero-Image img{
+    width: 450px;
 
 }
 section.search-section{
@@ -129,20 +167,23 @@ section.search-section{
 form.search-form{
     width: 100%;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: space-between;
 }
 form.search-form .row{
-    padding:10px 20px;
     width: calc(100%/3 - 50px);
     display: flex;
     align-items: flex-start;
     flex-direction: column;
 }
 form.search-form label{
-
+    font-size: 14px;
+    margin-bottom: 12px;
+    color: #202020;
 }
-form.search-form input,select{
+
+form.search-form input,
+form.search-form select{
     width: 100%;
     height: 40px;
     color: #000;
@@ -153,6 +194,19 @@ form.search-form input,select{
     border-radius: 5px;
     padding: 0 2.85rem 0 1rem;
     letter-spacing: 2px;
+}
+form.search-form select option[disabled]{
+    color: #b8b8b8;
+}
+
+form.search-form button{
+    font-size: 18px;
+    font-weight: 300;
+}
+form.search-form button i{
+    font-weight: 500;
+    margin-left: 5px;
+
 }
 
 /**/
