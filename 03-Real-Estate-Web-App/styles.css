@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Source+Sans+3:ital,wght@0,200..900;1,200..900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
-*,:before,:after{
+
+/* === RESET & BASE === */
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -7,206 +11,338 @@
     outline: none;
     border: none;
 }
-:root{
-    /*--main-color:*/
-    --bg-color:#ffff;
-    --main-color:#6d3bff;
-    --text-color:#202020;
-    --headings-font-family:"Playfair Display", serif;
-    --body-font-family:"Source Sans 3", sans-serif;
 
+:root {
+    --bg-color: #f6f6f6;
+    --main-color: #6d3bff;
+    --secondary-color: #fff;
+    --text-color: #202020;
+    --headings-font-family: "Playfair Display", serif;
+    --body-font-family: "Source Sans 3", sans-serif;
 }
-.dark-theme{
+
+.dark-theme {
     --bg-color: #202020;
 }
-h1,h2,h3{
-    font-family: "Rubik", sans-serif;
-}
-body{
+
+/* === TYPOGRAPHY === */
+body {
     background: var(--bg-color);
     font-family: var(--body-font-family);
+    color: var(--text-color);
 }
-/*Home Styling*/
-#home header{
+
+p {
+    font-family: var(--body-font-family);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--headings-font-family);
+    color: var(--text-color);
+}
+
+/* === GLOBAL UTILITIES === */
+.section-styles {
+    margin: 2rem auto;
+    background-color: var(--secondary-color);
+}
+
+/* === HEADER === */
+#home header {
     width: 100%;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     padding: 15px 30px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 19px 20px 3px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;;
-    background: var(--bg-color);
+    background: var(--secondary-color);
     color: var(--text-color);
-
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 19px 20px 3px, rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
 }
-#home header .logo p{
+
+#home header .logo p {
     font-family: "Rubik", sans-serif;
     font-size: 1.5rem;
     font-weight: 450;
     color: var(--main-color);
 }
-#home header .logo p span{
+
+#home header .logo p span {
     color: var(--text-color);
 }
-#home header .logo i,.theme i{
-    color: #6d3bff;
+
+#home header .logo i,
+.theme i {
+    color: var(--main-color);
     font-size: 25px;
     margin-right: 5px;
 }
-#home header nav{
+
+#home header nav {
     width: 50%;
 }
-#home header ul{
+
+#home header ul {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 }
-#home header ul li a{
+
+#home header ul li a {
+    position: relative;
     text-decoration: none;
     font-size: 20px;
-    color:var(--text-color);
     font-weight: 600;
-    position: relative;
+    color: var(--text-color);
 }
-#home header ul li a:before{
+
+#home header ul li a::before {
     content: "";
     position: absolute;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
-    background: var(--main-color);
-    transition:width .4s ease;
     height: 3px;
     width: 0;
+    background: var(--main-color);
+    transition: width 0.4s ease;
 }
-#home header ul li a:hover::before{
+
+#home header ul li a:hover::before {
     width: 100%;
 }
-#home header  button,
-section.hero-section button,
-form button[type="submit"]{
-    color: var(--bg-color);
-    background-color: var(--main-color);
+
+/* === BUTTONS === */
+button,
+#home header button,
+.hero-section button,
+form button[type="submit"] {
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 14px;
     padding: 10px 15px;
     border-radius: 10px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
     border: 1px solid var(--main-color);
-    transition:background-color.4s 0.05s ease,color.4s 0.05s ease;
-
-}
-#home header  button:hover,
-section.hero-section button:hover,
-form.search-form button:hover{
-    color:var(--bg-color);
     background-color: var(--main-color);
+    color: var(--bg-color);
+    transition: background-color 0.4s ease, color 0.4s ease;
 }
-button:active{
-    color: white;
-    box-shadow: 0 0.2rem #dfd9d9;
+
+button:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color);
+}
+
+button:active {
     transform: translateY(0.2rem);
+    box-shadow: 0 0.2rem #dfd9d9;
 }
-.theme-contact{
+
+/* === THEME ICON === */
+.theme-contact {
     display: flex;
     justify-content: space-between;
     align-items: center;
     min-width: 10%;
 }
-.theme{
+
+.theme {
     position: relative;
 }
-.theme i{
- position: absolute;
+
+.theme i {
+    display: none;
+    position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    display: none;
-    cursor: pointer;
+    transform: translate(-50%, -50%);
 }
-.theme i.active{
+
+.theme i.active {
     display: block;
 }
-/**/
-section.hero-section{
-    width: 90%;
-    margin-inline: auto;
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
 
+/* === HERO SECTION === */
+section.hero-section {
+    width: 90%;
+    margin: 2rem auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 2rem;
 }
-section.hero-section h1{
-    font-weight: bold;
-    font-size:3.9rem;
-    margin-bottom: 20px;
+
+.hero-details {
     width: 60%;
-    color: var(--main-color);
 }
-section.hero-section p{
-    font-size: 18px;
-    font-family: sans-serif;
+
+.hero-section h1 {
+    font-weight: bold;
+    font-size: 3.9rem;
+    color: var(--main-color);
+    margin-bottom: 20px;
+}
+
+.hero-section p {
     max-width: 80%;
+    font-size: 18px;
     font-weight: 300;
 }
-section.hero-section button{
-    margin-top:20px;
-    padding: 15px ;
-}
-section.hero-section .hero-Image{
+
+.hero-section button {
     margin-top: 20px;
-
+    padding: 15px;
 }
-section.hero-section .hero-Image img{
+
+.hero-Image {
+    width: 30%;
+}
+
+.hero-Image img {
     width: 450px;
-
 }
-section.search-section{
+
+/* === SEARCH SECTION === */
+.search-section {
     width: 90%;
     margin: 0 auto;
 }
-form.search-form{
-    width: 100%;
+
+form.search-form,
+.row {
     display: flex;
-    align-items: flex-end;
     justify-content: space-between;
+    align-items: flex-end;
 }
-form.search-form .row{
-    width: calc(100%/3 - 50px);
-    display: flex;
-    align-items: flex-start;
+
+form.search-form {
+    width: 100%;
+}
+
+form.search-form .row {
     flex-direction: column;
+    align-items: flex-start;
+    width: calc(100% / 3 - 50px);
 }
-form.search-form label{
+
+form.search-form label {
     font-size: 14px;
-    margin-bottom: 12px;
     color: #202020;
+    margin-bottom: 12px;
 }
 
 form.search-form input,
-form.search-form select{
+form.search-form select {
     width: 100%;
     height: 40px;
-    color: #000;
-    background: none;
+    padding: 0 2.85rem 0 1rem;
     font-size: 1.06rem;
     font-weight: 500;
     border: 1px solid #aaa;
     border-radius: 5px;
-    padding: 0 2.85rem 0 1rem;
+    background: none;
+    color: #000;
     letter-spacing: 2px;
 }
-form.search-form select option[disabled]{
+
+form.search-form select option[disabled] {
     color: #b8b8b8;
 }
 
-form.search-form button{
+form.search-form button {
     font-size: 18px;
     font-weight: 300;
+    padding: 10px 15px;
 }
-form.search-form button i{
-    font-weight: 500;
+
+form.search-form button i {
     margin-left: 5px;
-
+    font-weight: 500;
 }
 
-/**/
+/* === SERVICES SECTION === */
+.services-header p {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--main-color);
+}
+
+.services-header h1 {
+    font-weight: 800;
+    font-family: var(--headings-font-family);
+}
+
+#services,
+.service-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.cards {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-inline: auto;
+}
+
+.service-card {
+    padding: 3.23rem;
+    gap: 40px;
+    background-color: var(--secondary-color);
+    transition: transform 0.5s ease;
+    box-shadow: rgba(0, 0, 0, 0.05) 0 19px 20px 3px,
+    rgba(0, 0, 0, 0.08) 0 0 0 1px;
+}
+
+.service-card:hover {
+    transform: scale(1.05);
+}
+
+.service-card .card-header i {
+    font-size: 2rem;
+    color: var(--main-color);
+    border-radius: 50%;
+    border: 1px solid #eee;
+    padding: 20px;
+    box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px,
+    rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+.service-card .card-header h1 {
+    font-size: 1.2rem;
+    color: var(--main-color);
+    margin-top: 2rem;
+}
+
+.service-card .card-body p {
+    font-weight: 400;
+    letter-spacing: 0.08rem;
+}
+
+.service-card .card-footer {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    width: 100%;
+    color: var(--main-color);
+}
+
+.service-card .card-footer button {
+    font-size: 20px;
+    background-color: transparent;
+    color: var(--main-color);
+    border: none;
+}
+
+.service-card .card-footer i {
+    font-size: 2rem;
+    margin-left: 10px;
+}

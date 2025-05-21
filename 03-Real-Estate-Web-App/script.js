@@ -1,12 +1,12 @@
-import {createElement} from "./utils/createElement";
+import createElement from "./utils/createElement.js";
 import SERVICES from "./data/services.js";
-
 const cardsContainer = document.querySelector(".cards");
+console.log("hello world!");
 function createServiceCard({icon,title,service}) {
     const card = createElement("div", "service-card");
 
     // Header
-    const cardHeader = createElement("div", "cardHeader");
+    const cardHeader = createElement("div", "card-header");
     const headerIcon = createElement("i", `ti ti-${icon}`);
     const h1 = createElement("h1", "", title);
     cardHeader.append(headerIcon, h1);
@@ -18,8 +18,8 @@ function createServiceCard({icon,title,service}) {
 
     // Footer
     const cardFooter = createElement("div", "card-footer");
-    const button = createElement("button", "", "Learn More");
-    const footerIcon = createElement("i", "ti ti-arrow-right");
+    const button = createElement("button", "", "Let Talk");
+    const footerIcon = createElement("i", "ti ti-arrow-narrow-right");
     cardFooter.append(button, footerIcon);
 
     card.append(cardHeader, cardBody, cardFooter);
@@ -31,4 +31,3 @@ SERVICES.forEach(service => {
     const card = createServiceCard(service);
     cardsContainer.appendChild(card);
 });
-
