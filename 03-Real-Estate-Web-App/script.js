@@ -1,7 +1,10 @@
 import createElement from "./utils/createElement.js";
 import SERVICES from "./data/services.js";
+import ABOUT from "./data/about.js";
 const cardsContainer = document.querySelector(".cards");
-console.log("hello world!");
+const about=document.querySelector(".about-us .about-content")
+
+// create Services Cards
 function createServiceCard({icon,title,service}) {
     const card = createElement("div", "service-card");
 
@@ -31,3 +34,25 @@ SERVICES.forEach(service => {
     const card = createServiceCard(service);
     cardsContainer.appendChild(card);
 });
+// Create About Sections Content
+function createAboutUs({section,title,description,services}) {
+    const sectionName=createElement("p","section-name",section);
+    const about_title=createElement("h1","about-title",title);
+    const aboutDescription=createElement("p","about-description",description);
+    const whatWeOffer=services.map(({icon,title,description})=>{
+        const serviceContainer=createElement("div","container")
+        const wrapper=createElement("div","wrapper")
+        const iconElement=createElement("i",`ti ti-${icon}`);
+        const h1=createElement("h1","service-title",title);
+        const p=createElement("p","description",description)
+        const button=createElement("button","discover-now-btn","Discover Now")
+        const arrowIcon = createElement("i", "ti ti-chevron-right");
+        button.appendChild(arrowIcon);
+        serviceContainer.append(iconElement);
+        wrapper.append(h1,p,button)
+        serviceContainer.append(wrapper);
+        return serviceContainer
+    })
+    about.append(sectionName,about_title,aboutDescription,...whatWeOffer)
+}
+createAboutUs(ABOUT)
