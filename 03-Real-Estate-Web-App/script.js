@@ -1,8 +1,10 @@
 import createElement from "./utils/createElement.js";
 import SERVICES from "./data/services.js";
 import ABOUT from "./data/about.js";
+import PROPERTIES from "./data/properties.js";
 const cardsContainer = document.querySelector(".cards");
-const about=document.querySelector(".about-us .about-content")
+const about=document.querySelector(".about-us .about-content");
+const propertiesSection=document.querySelector("#properties")
 
 // create Services Cards
 function createServiceCard({icon,title,service}) {
@@ -28,7 +30,6 @@ function createServiceCard({icon,title,service}) {
     card.append(cardHeader, cardBody, cardFooter);
     return card;
 }
-
 // Render all cards
 SERVICES.forEach(service => {
     const card = createServiceCard(service);
@@ -55,4 +56,48 @@ function createAboutUs({section,title,description,services}) {
     })
     about.append(sectionName,about_title,aboutDescription,...whatWeOffer)
 }
-createAboutUs(ABOUT)
+createAboutUs(ABOUT);
+// Create Properties Section
+const cards=(properties)=>{
+    properties.forEach(({title,bedrooms,bathrooms,description,square_feet,price,agent_name,location,image,agent_image})=>{
+        const div=createElement("div","card");
+        const propertyImage=createElement("img","property-image")
+        propertyImage.setAttribute("src",image);
+        // create card Header
+        const cardHeader=createElement("div","card-header");
+        const propertyName=createElement("h3","property-name",title);
+        const propertyPrice=createElement("h2","property-price",price);
+        cardHeader.append(propertyName,propertyPrice);
+        // create card body
+        const cardBody=createElement("div","card-body");
+        const propertyDescription=createElement("p","property-description",description);
+        const propertyDetails=createElement("div","property-details");
+        const bedroomsNumber=createElement("span","rooms-number",bedrooms)
+        const bedroomIcon=createElement("i","ti ti-bed");
+        bedroomsNumber.insertAdjacentElement('afterbegin',bedroomIcon);
+        const bathRoomsNumber=createElement("span","rooms-number",bathrooms)
+        const bathroomIcon=createElement("i","ti ti-bath");
+        bathRoomsNumber.insertAdjacentElement('afterbegin',bathroomIcon);
+        bedroomsNumber.insertAdjacentElement('afterbegin',bedroomsNumber);
+        const space=createElement("span","rooms-number",square_feet)
+        const rulerIcon=createElement("i","ti ti-ruler-2");
+        space.insertAdjacentElement('afterbegin',rulerIcon);
+        //card footer
+        const cardFooter=createElement("div","card-footer");
+        const agentImage=createElement("img","agent-image");
+        agentImage.src=agent_image;
+        
+    })
+}
+
+function creatProperties ({title,subTitle,description,properties}){
+    const div=createElement("div","wrapper")
+    const h4=createElement("h4","properties-title",title)
+    const h1=createElement("h1","sub-properties-title",subTitle)
+    const p=createElement("p","p-properties-description",description);
+    // create properties header
+    div.append(h4,h1,p);
+    propertiesSection.append(div)
+    cards(properties)
+}
+creatProperties(PROPERTIES)

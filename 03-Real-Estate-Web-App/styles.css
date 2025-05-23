@@ -32,6 +32,7 @@ body {
     background: var(--bg-color);
     font-family: var(--body-font-family);
     color: var(--text-color);
+    overflow-x: hidden;
 
 }
 body::-webkit-scrollbar-thumb{
@@ -455,4 +456,21 @@ form.search-form button i {
 .about-content .container .wrapper button i{
     font-size: 25px;
     font-weight: lighter;
+}
+/*Properties Styles*/
+#properties{
+    text-align: center;
+    background: var(--bg-color);
+}
+#properties h4{
+    color: var(--main-color);
+    font-weight: bold;
+}
+#properties h1{
+    font-weight: bold;
+}
+#properties p{
+    max-width: 50%;
+    margin-inline:auto;
+    font-size: 18px;
 }
